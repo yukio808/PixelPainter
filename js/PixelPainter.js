@@ -1,13 +1,10 @@
 $(function(){
 
   function PixelPainter(height, width){
-
     var swatches = $('<div>', {"class" : "swatches"});
-    // instantiate a loop to push a number of divs into our swatches div.
     var num_swatches = 25;
     var swatch_size = "20px";
     var square_size = "36px";
-
 
     var colors = [
       "rgb(243, 67, 222)",
@@ -58,7 +55,7 @@ $(function(){
     });
 
     $('#controls').append(swatches, erase, clear);
-    // we have created the basic layout of the content div by appending all the neccessary tags
+
     var grid = $('<div>', {"class" : "grid"});
     var rowWidth = (Number(square_size.substring(0, square_size.length-2)) + 2) * width;
 
@@ -76,39 +73,38 @@ $(function(){
     }
 
     $('#artboard').append(grid);
-    // we instantiated the width of the .grid to early because the functiuon did not even create the grid till after we defined the width that did not apply because it applied to an imaginary div.grid
     $('.grid').css({"width" : rowWidth.toString() + "px"});
   }
 
   function color_str (){
-    // var randomColor1 = Math.floor(Math.random() * 0xFF);
-    // var randomColor2 = Math.floor(Math.random() * 0xFF);
-    // var randomColor3 = Math.floor(Math.random() * 0xFF);
+    var randomColor1 = Math.floor(Math.random() * 0xFF);
+    var randomColor2 = Math.floor(Math.random() * 0xFF);
+    var randomColor3 = Math.floor(Math.random() * 0xFF);
 
-    // return "rgb("+randomColor1+", "+randomColor2+", "+randomColor3+")";
-
-
+    return "rgb("+randomColor1+", "+randomColor2+", "+randomColor3+")";
   }
-
 
   PixelPainter(20, 20);
 
   $('#clear').click(function(){
-    $('.square').css({"background-color" : "#FFFFFF"});
+    $('.square').css({"background-color" : "rgb(255, 255, 255)"});
   });
 
-  // added a function to clear the board of all css colors other than white.
   var curr_color = "rgb(255, 255, 255)";
+
+  //selects a swatch
   $('.color').click(function(){
     curr_color = $(this).css("background-color");
     $('.color').css({"border" : "none"});
     $(this).css({"border" : "solid #000000 1px"});
   });
 
+  //colors grid
   $('.square').click(function (){
     $(this).css({"background-color" : curr_color});
   });
 
+  //sets current color to white so we turn grid squares white (to "erase" them)
   $('#erase').click(function(){
     curr_color = "rgb(255, 255, 255)";
   });
