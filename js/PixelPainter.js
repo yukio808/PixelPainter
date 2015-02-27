@@ -3,6 +3,7 @@ $(function(){
   function PixelPainter(height, width){
     var swatches = $('<div>', {"class" : "swatches"});
     var num_swatches = 25;
+    var swatch_column_num = 5;
     var swatch_size = "20px";
     var square_size = "36px";
 
@@ -39,7 +40,9 @@ $(function(){
       new_swatch.css({
         'background-color' : colors[i],
         'height' : swatch_size,
-        'width' : swatch_size
+        'width' : swatch_size,
+        'display' : 'inline-block',
+        "border" : "solid #000000 2px"
       });
       swatches.append(new_swatch);
 
@@ -54,7 +57,11 @@ $(function(){
       html : "clear"
     });
 
-    $('#controls').append(swatches, erase, clear);
+    var swatchesWidth = (Number(swatch_size.substring(0, swatch_size.length-2)) + 4) * swatch_column_num;
+    $('#controls').append(swatches);
+    $('#controls').addClass('clearfix');
+    $('.swatches').after(erase, clear);
+    $('.swatches').css({"width" : swatchesWidth.toString() + "px"});
 
     var grid = $('<div>', {"class" : "grid"});
     var rowWidth = (Number(square_size.substring(0, square_size.length-2)) + 2) * width;
@@ -71,11 +78,11 @@ $(function(){
         grid.append(new_square);
       } 
     }
-    $('.grid').css({'width' : rowWidth.toString() + 'px'});
-    console.log(rowWidth);
 
     $('#artboard').append(grid);
     $('.grid').css({"width" : rowWidth.toString() + "px"});
+    $('#artboard').addClass('clearfix');
+
   }
 
   PixelPainter(20, 20);
@@ -89,17 +96,30 @@ $(function(){
   });
 
   var curr_color = "rgb(255, 255, 255)";
+  var isMouseDown = false;
 
   //selects a swatch
   $('.color').click(function(){
     curr_color = $(this).css("background-color");
-    $('.color').css({"border" : "none"});
-    $(this).css({"border" : "solid #000000 1px"});
+    $('.color').css({"border" : "solid #000000 2px"});
+    $(this).css({"border" : "solid #FFFFFF 2px"});
   });
 
   //colors grid
-  $('.square').click(function (){
-    $(this).css({"background-color" : curr_color});
+  $('.grid').mousedown(function() {
+    isMouseDown = true;
+  });
+  
+  $('.grid').mouseup(function() {
+    isMouseDown = false;
+  });
+
+  $('.square').mouseover(function (){
+    if (isMouseDown) {
+
+          $(this).css({"background-color" : curr_color});
+      
+    }
   });
 
   //sets current color to white so we turn grid squares white (to "erase" them)
