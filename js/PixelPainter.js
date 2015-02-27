@@ -78,16 +78,11 @@ $(function(){
     $('.grid').css({"width" : rowWidth.toString() + "px"});
   }
 
-  function color_str (){
-    var randomColor1 = Math.floor(Math.random() * 0xFF);
-    var randomColor2 = Math.floor(Math.random() * 0xFF);
-    var randomColor3 = Math.floor(Math.random() * 0xFF);
-
-    return "rgb("+randomColor1+", "+randomColor2+", "+randomColor3+")";
-  }
-
-
   PixelPainter(20, 20);
+
+  /*
+    CLICK HANDLERS! YAY.
+   */
 
   $('#clear').click(function(){
     $('.square').css({"background-color" : "rgb(255, 255, 255)"});
