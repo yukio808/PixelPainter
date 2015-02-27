@@ -71,6 +71,8 @@ $(function(){
         grid.append(new_square);
       } 
     }
+    $('.grid').css({'width' : rowWidth.toString() + 'px'});
+    console.log(rowWidth);
 
     $('#artboard').append(grid);
     $('.grid').css({"width" : rowWidth.toString() + "px"});
@@ -83,6 +85,7 @@ $(function(){
 
     return "rgb("+randomColor1+", "+randomColor2+", "+randomColor3+")";
   }
+
 
   PixelPainter(20, 20);
 
