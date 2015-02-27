@@ -32,7 +32,7 @@ $(function(){
     // we have created the basic layout of the content div by appending all the neccessary tags
     var grid = $('<div>', {"class" : "grid"});
     var rowWidth = (Number(square_size.substring(0, square_size.length-2)) + 2) * width;
-    console.log(square_size);
+    // console.log((Number(square_size.substring(0, square_size.length-2)) + 2) * width);
 
 
     for (var j = 0; j < height; j++) {
@@ -47,10 +47,10 @@ $(function(){
         grid.append(new_square);
       } 
     }
-    $('.grid').css({'width' : rowWidth.toString() + 'px'});
-    console.log(rowWidth);
-
+    // console.log(rowWidth.toString() + 'px');
     $('#artboard').append(grid);
+    // we instantiated the width of the .grid to early because the functiuon did not even create the grid till after we defined the width that did not apply because it applied to an imaginary div.grid
+    $('.grid').css({"width" : rowWidth.toString() + "px"});
   }
 
   function color_str (){
