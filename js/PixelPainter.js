@@ -97,14 +97,21 @@ $(function(){
   $('#clear').click(function(){
     $('.square').css({"background-color" : "#FFFFFF"});
   });
+
   // added a function to clear the board of all css colors other than white.
   var curr_color = "rgb(255, 255, 255)";
   $('.color').click(function(){
     curr_color = $(this).css("background-color");
+    $('.color').css({"border" : "none"});
+    $(this).css({"border" : "solid #000000 1px"});
   });
+
   $('.square').click(function (){
     $(this).css({"background-color" : curr_color});
   });
 
+  $('#erase').click(function(){
+    curr_color = "rgb(255, 255, 255)";
+  });
 
 });//document.ready
