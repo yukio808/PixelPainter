@@ -1,0 +1,12 @@
+body{
+  min-width: 915px;
+  /*min-height: */
+}
+#artboard{
+  float: left;
+  margin-left: 40px;
+}
+#controls{
+  float: left;
+  width: 10%;
+}
