@@ -107,21 +107,25 @@ $(function(){
 
   //keep track of mousedown/up state on grid, so it won't
   //matter which square we're on when we're dragging
-  $('.grid').mousedown(function() {
+  $(document).mousedown(function() {
     isMouseDown = true;
   });
 
-  $('.grid').mouseup(function() {
+  $(document).mouseup(function() {
     isMouseDown = false;
   });
-
   //whenever we mouse over a square, check if we've moused down on the grid (if so, paint)
   $('.square').mouseover(function (){
     if (isMouseDown) {
           $(this).css({"background-color" : curr_color});
     }
   });
-
+  $('.square').mousedown(function(){
+    $(this).css({"background-color" : curr_color});
+  });
+  $('.square').click(function(){
+    $(this).css({"background-color" : curr_color});
+  });
   //sets current color to white so we turn grid squares white (to "erase" them)
   $('#erase').click(function(){
     curr_color = "rgb(255, 255, 255)";
