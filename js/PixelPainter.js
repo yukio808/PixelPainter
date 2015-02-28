@@ -1,5 +1,13 @@
 $(function(){
 
+  function generateRGB (){
+    var randomColor1 = Math.floor(Math.random() * 0xFF);
+    var randomColor2 = Math.floor(Math.random() * 0xFF);
+    var randomColor3 = Math.floor(Math.random() * 0xFF);
+
+    return "rgb("+randomColor1+", "+randomColor2+", "+randomColor3+")";
+  }
+
   function PixelPainter(height, width){
     var swatches = $('<div>', {"class" : "swatches"});
     var num_swatches = 25;
@@ -38,7 +46,8 @@ $(function(){
     for(var i = 0; i < num_swatches; i++) {
       var new_swatch = $('<div>', {"class" : "color"});
       new_swatch.css({
-        'background-color' : colors[i],
+        // 'background-color' : colors[i],
+        'background-color' : generateRGB(),
         'height' : swatch_size,
         'width' : swatch_size,
         'display' : 'inline-block',
@@ -105,20 +114,28 @@ $(function(){
     $(this).css({"border" : "solid #FFFFFF 2px"});
   });
 
-  //keep track of mousedown/up state on grid, so it won't
+  //keep track of mousedown/up state on document, so it won't
   //matter which square we're on when we're dragging
-  $('.grid').mousedown(function() {
-    isMouseDown = true;
-  });
-
-  $('.grid').mouseup(function() {
-    isMouseDown = false;
+  //also, will allow user to drag cursor off screen and still
+  //paint correctly
+  $(document).bind({
+    mousedown : function() {
+      isMouseDown = true;
+    },
+    mouseup : function() {
+      isMouseDown = false;
+    }
   });
 
   //whenever we mouse over a square, check if we've moused down on the grid (if so, paint)
-  $('.square').mouseover(function (){
-    if (isMouseDown) {
-          $(this).css({"background-color" : curr_color});
+  $('.square').bind({
+    mouseover : function (){
+      if (isMouseDown) {
+            $(this).css({"background-color" : curr_color});
+      }
+    },
+    mousedown : function (){
+      $(this).css({"background-color" : curr_color});
     }
   });
 
