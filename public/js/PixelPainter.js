@@ -1,5 +1,4 @@
 $(function(){
-
   // function generateRGB (){
   //   var randomColor1 = Math.floor(Math.random() * 0xFF);
   //   var randomColor2 = Math.floor(Math.random() * 0xFF);
@@ -155,13 +154,38 @@ $(function(){
 
   $('#save').click(function(event) {
     event.preventDefault();
-    var file_name  = prompt("Please enter title for drawing: ", "New Drawing");
-    var data = {name : file_name };
-    if (file_name !== null) {
-    $.post("/pixelPainter", data, function ( data ){
-      console.log("success");
+    var grid = [];
+    // for(var i = 0; i < $('.square').length; i++){
+      // grid.push($($('.square')[i]).css("background-color"));
+    // }
+    $('.square').each(function (index, element){
+      grid.push($(this).css("background-color"));
     });
+    var file_name  = prompt("Please enter title for drawing: ", "New Drawing");
+    var data = {name : file_name , grid : grid };
+    console.log(data);
+    if (file_name !== null) {
+      $.post("/pixelPainter", data, function ( data ){
+        console.log("success");
+      });
     }
   });
+
+  $('#load').click(function(event){
+    //event.preventDefault();
+
+  });
+
+  if(gridToRender){
+    gridToRender.grid.forEach(function (ele) {
+      // console.log(ele);
+    });
+    $(".square").each(function( index, ele){
+      $(ele).css("background-color", gridToRender.grid[index] );
+      console.log(gridToRender.grid[index]);
+
+    });
+    // console.log(gridToRender.grid);
+  }
 
 });//document.ready

@@ -3,11 +3,11 @@ var app = express();
 var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/pixelchat');
 var Schema = mongoose.Schema;
 
 var picSchema = new Schema({
-  grid : String,
+  grid : Array,
   filename : String,
   timestamp: Date
 });
@@ -19,30 +19,39 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.set('view engine', 'jade');
 
-app.get('/', function(req, res) {
-  res.render('application');
-});
+// app.get('/', function(req, res) {
+//   res.render('application');
+// });
 
 app.get('/pixelPainter', function (req, res){
   res.render('application');
 });
 
 app.post('/pixelPainter', function (req, res){
-  // var file_name = req.body.file_name;
-  // var grid = req.body.grid;
+  var file_name = req.body.file_name;
+  var grid = req.body.grid;
 
-  // var pic = new Pic(
-  // {
-  //   file_name : file_name,
-  //   grid : grid
-  // });
+  var pic = new Pic(
+  {
+    file_name : file_name,
+    grid : grid
+  });
 
-  // pic.save(function (err){
-  //   if (err) throw err;
-  // res.render('application');
-  // });
-  console.log(req.body.name);
-  res.send('successful post{TEST}');
+  pic.save(function (err, pic){
+    if (err) throw err;
+    console.log(pic);
+  res.send('victory is mine');
+  });
+  // console.log(req.body);
+  // res.send('successful post{TEST}');
+});
+
+app.get('/pixelPainter/:id', function (req, res){
+  // console.log(req.params.id);
+  Pic.findById(req.params.id, function (err, pic){
+    if (err) throw err;
+    res.render('restoredgrid', {pic : pic});
+  });
 });
 
 
