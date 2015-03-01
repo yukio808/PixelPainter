@@ -1,0 +1,25 @@
+{
+  "name": "PixelPainter",
+  "version": "1.0.0",
+  "description": "PixelPainter ============",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jwijay/PixelPainter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jwijay/PixelPainter/issues"
+  },
+  "homepage": "https://github.com/jwijay/PixelPainter",
+  "dependencies": {
+    "body-parser": "^1.12.0",
+    "express": "^4.12.0",
+    "jade": "^1.9.2",
+    "mongoose": "^3.8.24"
+  }
+}
