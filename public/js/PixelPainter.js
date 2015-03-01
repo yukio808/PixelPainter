@@ -162,7 +162,7 @@ $(function(){
       grid.push($(this).css("background-color"));
     });
     var file_name  = prompt("Please enter title for drawing: ", "New Drawing");
-    var data = {name : file_name , grid : grid };
+    var data = {file_name : file_name , grid : grid };
     console.log(data);
     if (file_name !== null) {
       $.post("/pixelPainter", data, function ( data ){
@@ -181,7 +181,7 @@ $(function(){
       // console.log(ele);
     });
     $(".square").each(function( index, ele){
-      $(ele).css("background-color", gridToRender.grid[index] );
+      $(ele).css("background-color", gridToRender.grid[index]);
       console.log(gridToRender.grid[index]);
 
     });

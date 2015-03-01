@@ -8,7 +8,7 @@ var Schema = mongoose.Schema;
 
 var picSchema = new Schema({
   grid : Array,
-  filename : String,
+  file_name : String,
   timestamp: Date
 });
 
@@ -19,9 +19,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.set('view engine', 'jade');
 
-// app.get('/', function(req, res) {
-//   res.render('application');
-// });
+app.get('/', function(req, res) {
+  Pic.find(function(err, pics){
+    if(err) throw err;
+    console.log(pics[0]);
+    res.render('app', {pics : pics});
+  });
+});
 
 app.get('/pixelPainter', function (req, res){
   res.render('application');

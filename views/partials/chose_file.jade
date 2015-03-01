@@ -1,7 +1,7 @@
-extends .app.jade
+extends ../application
 
 block content
   h2 Drawings
-    each saved_file in saved_file
+    each file in saved_file
       li
-        a(href=saved_file)
+        a(href="/pixelPainter/#{file._id}")= file.file_name
