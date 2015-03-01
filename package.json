@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "PixelPainter ============",
   "main": "index.js",
+<<<<<<< HEAD
   "dependencies": {
     "body-parser": "^1.12.0",
     "express": "^4.12.0",
@@ -10,17 +11,35 @@
     "mongoose": "^3.8.24"
   },
   "devDependencies": {},
+=======
+>>>>>>> 3630206dac60ee7ae09d1b8db4e634b1eb1d11b7
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
+<<<<<<< HEAD
     "url": "https://github.com/yukio808/PixelPainter.git"
+=======
+    "url": "https://github.com/jwijay/PixelPainter.git"
+>>>>>>> 3630206dac60ee7ae09d1b8db4e634b1eb1d11b7
   },
   "author": "",
   "license": "ISC",
   "bugs": {
+<<<<<<< HEAD
     "url": "https://github.com/yukio808/PixelPainter/issues"
   },
   "homepage": "https://github.com/yukio808/PixelPainter"
+=======
+    "url": "https://github.com/jwijay/PixelPainter/issues"
+  },
+  "homepage": "https://github.com/jwijay/PixelPainter",
+  "dependencies": {
+    "body-parser": "^1.12.0",
+    "express": "^4.12.0",
+    "jade": "^1.9.2",
+    "mongoose": "^3.8.24"
+  }
+>>>>>>> 3630206dac60ee7ae09d1b8db4e634b1eb1d11b7
 }

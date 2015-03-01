@@ -65,9 +65,13 @@ $(function(){
       "id" : "clear",
       html : "clear"
     });
+    // var save = $('<button>' ,{
+    //   "id" : "save",
+    //   html : "save"
+    // });
 
     var swatchesWidth = (Number(swatch_size.substring(0, swatch_size.length-2)) + 4) * swatch_column_num;
-    $('#controls').append(swatches);
+    $('#controls').prepend(swatches);
     $('#controls').addClass('clearfix');
     $('.swatches').after(erase, clear);
     $('.swatches').css({"width" : swatchesWidth.toString() + "px"});
@@ -129,12 +133,12 @@ $(function(){
   });
   //whenever we mouse over a square, check if we've moused down on the grid (if so, paint)
   $('.square').bind({
-    mouseover : function (){
+    mouseover : function () {
       if (isMouseDown) {
             $(this).css({"background-color" : curr_color});
       }
     },
-    mousedown : function (){
+    mousedown : function () {
       $(this).css({"background-color" : curr_color});
     }
   });
@@ -145,8 +149,16 @@ $(function(){
     $(this).css({"background-color" : curr_color});
   });
   //sets current color to white so we turn grid squares white (to "erase" them)
-  $('#erase').click(function(){
+  $('#erase').click(function() {
     curr_color = "rgb(255, 255, 255)";
+  });
+
+  $('#save').click(function() {
+    var file_name  = prompt("Please enter title for drawing: ", "New Drawing");
+
+    if (file_name !== null) {
+      console.log(file_name);
+    }
   });
 
 });//document.ready

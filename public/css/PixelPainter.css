@@ -39,7 +39,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-#erase, #clear {
+#erase, #clear , #save, #load {
   display: block;
   margin: auto;
 }
