@@ -171,11 +171,6 @@ $(function(){
     }
   });
 
-  $('#load').click(function(event){
-    //event.preventDefault();
-
-  });
-
   if(gridToRender){
     gridToRender.grid.forEach(function (ele) {
       // console.log(ele);

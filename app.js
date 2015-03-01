@@ -23,7 +23,7 @@ app.get('/', function(req, res) {
   Pic.find(function(err, pics){
     if(err) throw err;
     console.log(pics[0]);
-    res.render('app', {pics : pics});
+    res.render('app', {pics : pics, });
   });
 });
 
