@@ -1,0 +1,45 @@
+@import url('_reset.css');
+@import url(http://fonts.googleapis.com/css?family=Fugaz+One);
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+html, button {
+  font-family: 'Fugaz One', cursive;
+  font-size: 20px;
+}
+
+body {
+  min-width: 915px;
+    -webkit-user-select: none;
+     -moz-user-select: -moz-none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+h1 {
+  font-size: 2em;
+  /*color: red;*/
+}
+
+#artboard {
+  float: left;
+}
+
+#controls {
+  float: left;
+  margin-right: 20px;
+}
+
+.swatches {
+  border: solid 2px #000000;
+  margin-bottom: 20px;
+}
+
+#erase, #clear {
+  display: block;
+  margin: auto;
+}

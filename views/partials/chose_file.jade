@@ -1,0 +1,7 @@
+extends .app.jade
+
+block content
+  h2 Drawings
+    each saved_file in saved_file
+      li
+        a(href=saved_file)
