@@ -153,11 +153,14 @@ $(function(){
     curr_color = "rgb(255, 255, 255)";
   });
 
-  $('#save').click(function() {
+  $('#save').click(function(event) {
+    event.preventDefault();
     var file_name  = prompt("Please enter title for drawing: ", "New Drawing");
-
+    var data = {name : file_name };
     if (file_name !== null) {
-      console.log(file_name);
+    $.post("/pixelPainter", data, function ( data ){
+      console.log("success");
+    });
     }
   });
 
